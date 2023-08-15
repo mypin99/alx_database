@@ -1,17 +1,8 @@
--- This script creates MySQL users and grants privileges to them.
+-- This script checks the existence of MySQL users and provides output accordingly.
 -- Make sure to have MySQL server running on localhost.
 
--- Create user user_0d_1
-CREATE USER 'user_0d_1'@'localhost';
+-- Check if user user_0d_1 exists
+SELECT IF(EXISTS(SELECT 1 FROM mysql.user WHERE User = 'user_0d_1'), 'user_0d_1 EXISTS', 'user_0d_1 DOES NOT EXIST') AS Result;
 
--- Grant all privileges to user_0d_1
-GRANT ALL PRIVILEGES ON *.* TO 'user_0d_1'@'localhost';
-
--- Create user user_0d_2
-CREATE USER 'user_0d_2'@'localhost';
-
--- Grant all privileges to user_0d_2
-GRANT ALL PRIVILEGES ON *.* TO 'user_0d_2'@'localhost';
-
--- Flush privileges to apply changes
-FLUSH PRIVILEGES;
+-- Check if user user_0d_2 exists
+SELECT IF(EXISTS(SELECT 1 FROM mysql.user WHERE User = 'user_0d_2'), 'user_0d_2 EXISTS', 'user_0d_2 DOES NOT EXIST') AS Result;
